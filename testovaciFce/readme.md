@@ -104,10 +104,3 @@ Níže jsou ukázky výsledků pro různé dimenze:
 #### **20D**
 
 ![Zakharov 20D](charts/convergence_Zakharov_20D.png)
-
-## **Jak spustit kód?**
-
-Pro spuštění kódu je potřeba mít nainstalovanou knihovnu **NumPy, Matplotlib a Pandas**:
-
-```bash
-pip install numpy matplotlib pandas
