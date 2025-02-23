@@ -39,10 +39,8 @@ def styblinskiTangFunction(v):
     return sum([x ** 4 - 16 * x ** 2 + 5 * x for x in v]) / 2
 
 
-def zakharovFunction(v):
-    sum1 = sum(x ** 2 for x in v)
-    sum2 = sum(0.5 * (i + 1) * x for i, x in enumerate(v))
-    return sum1 + sum2 ** 2 + sum2 ** 4
+def rastriginFunction(v):
+    return 10 * len(v) + sum([x ** 2 - 10 * math.cos(2 * math.pi * x) for x in v])
 
 
 def showCoveragePlot(values, maxFES, D, func_name, best_value, best_point, bounds, save=True):
@@ -77,11 +75,11 @@ if __name__ == '__main__':
     dimensions = [5, 10, 20]
     maxFES_per_D = 10000
     functions = [
-        OptimizationFunction("Sphere", sphereFunction, (-10, 10)),
+        OptimizationFunction("Sphere", sphereFunction, (-5.12, 5.12)),
         OptimizationFunction("Dixon-Price", dixonPriceFunction, (-10, 10)),
         OptimizationFunction("Michaelowicz", michaelowiczFunction, (0, math.pi)),
         OptimizationFunction("Styblinski-Tang", styblinskiTangFunction, (-5, 5)),
-        OptimizationFunction("Zakharov", zakharovFunction, (-5, 10))
+        OptimizationFunction("Rastrigin", rastriginFunction, (-5.12, 5.12))
     ]
 
     results = []
@@ -139,10 +137,6 @@ if __name__ == '__main__':
     styblinskiTangFunctionX = np.linspace(-5, 5, 100)
     plotChart(styblinskiTangFunctionX, [styblinskiTangFunction([x]) for x in styblinskiTangFunctionX],
               'Styblinski-Tang Function', 'x', 'f(x)')
-
-    zakharovFunctionX = np.linspace(-5, 10, 100)
-    plotChart(zakharovFunctionX, [zakharovFunction([x]) for x in zakharovFunctionX],
-              'Zakharov Function', 'x', 'f(x)')
     '''
 
     print("Sphere Function")

@@ -11,7 +11,7 @@ Optimalizujeme následující funkce:
 - **Dixon-Price Function**
 - **Michaelowicz Function**
 - **Styblinski-Tang Function**
-- **Zakharov Function**
+- **Rastrigin Function**
 
 Každá z funkcí je testována ve třech dimenzích: **5D, 10D a 20D**.
 
@@ -91,16 +91,16 @@ Níže jsou ukázky výsledků pro různé dimenze:
 
 ---
 
-### **Zakharov Function**
+### **Rastrigin Function**
 
 #### **5D**
 
-![Zakharov 5D](charts/convergence_Zakharov_5D.png)
+![Rastrigin 5D](charts/convergence_Rastrigin_5D.png)
 
 #### **10D**
 
-![Zakharov 10D](charts/convergence_Zakharov_10D.png)
+![Rastrigin 10D](charts/convergence_Rastrigin_10D.png)
 
 #### **20D**
 
-![Zakharov 20D](charts/convergence_Zakharov_20D.png)
+![Rastrigin 20D](charts/convergence_Rastrigin_20D.png)
