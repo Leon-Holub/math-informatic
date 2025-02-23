@@ -1,3 +1,5 @@
+[odkaz na repozitář, ať se to nemusí otvírat](https://github.com/Leon-Holub/math-informatic/tree/master/testovaciFce)
+
 # Analýza optimalizačních funkcí pomocí náhodného prohledávání
 
 Tento projekt implementuje optimalizační algoritmus **náhodného prohledávání** pro různé testovací funkce.  
