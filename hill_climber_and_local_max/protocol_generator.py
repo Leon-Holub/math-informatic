@@ -1,16 +1,15 @@
-import functions
 import numpy as np
+
+import functions
 from main import local_search, hill_climber
 
 
 def generate_protocol(results):
     filename = "README.md"
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(f"# Optimalizační Protokol\n\n")
-        f.write(
-            "Tento protokol dokumentuje optimalizaci různých testovacích funkcí pomocí algoritmů Local Search a Hill Climber.\n")
-        f.write(
-            "Testování probíhá na stejném startovacím bodě pro každou funkci s pevnou dimenzí **2**. Cílem je porovnat efektivitu algoritmů a vliv různých parametrů na nalezení minima.\n\n")
+        f.write(f"# Horolezecký algoritmus a lokální prohledávání \n\n")
+        f.write("Tento protokol dokumentuje optimalizaci různých testovacích funkcí pomocí algoritmů Local Search a Hill Climber.\n")
+        f.write("Testování probíhá na stejném startovacím bodě pro každou funkci s pevnou dimenzí **2**. Cílem je porovnat efektivitu algoritmů a vliv různých parametrů na nalezení minima.\n\n")
 
         f.write("## Navigace\n\n")
         for function_name in results.keys():
@@ -18,8 +17,8 @@ def generate_protocol(results):
 
         f.write("\n")
 
-        total_ls_best = []
-        total_hc_best = []
+        ls_wins = 0
+        hc_wins = 0
 
         for function_name, experiments in results.items():
             f.write(f"## {function_name}\n\n")
@@ -43,8 +42,10 @@ def generate_protocol(results):
             f.write(f"- **Local Search**: {worst_ls_result['ls_best_value']:.4f} při bodě **{worst_ls_result['ls_best_point']}** s nastavením: Iterace **{worst_ls_params[0]}**, Sousedi **{worst_ls_params[1]}**, STD **{worst_ls_params[2]}**.\n")
             f.write(f"- **Hill Climber**: {worst_hc_result['hc_best_value']:.4f} při bodě **{worst_hc_result['hc_best_point']}** s nastavením: Iterace **{worst_hc_params[0]}**, Sousedi **{worst_hc_params[1]}**, STD **{worst_hc_params[2]}**.\n\n")
 
-            total_ls_best.append(best_ls_result["ls_best_value"])
-            total_hc_best.append(best_hc_result["hc_best_value"])
+            if best_ls_result["ls_best_value"] < best_hc_result["hc_best_value"]:
+                ls_wins += 1
+            else:
+                hc_wins += 1
 
             f.write("### Výsledky jednotlivých testů\n\n")
             f.write("| Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |\n")
@@ -60,18 +61,15 @@ def generate_protocol(results):
 
             f.write("\n")
 
-        avg_ls_best = sum(total_ls_best) / len(total_ls_best)
-        avg_hc_best = sum(total_hc_best) / len(total_hc_best)
-
         f.write("## Závěr\n\n")
         f.write("Na základě provedených experimentů lze vyvodit následující závěry:\n\n")
 
-        if avg_ls_best < avg_hc_best:
-            f.write(f"- **Celkově se lépe vedl Local Search**, který dosáhl v průměru lepší hodnoty než Hill Climber (**{avg_ls_best:.4f} vs. {avg_hc_best:.4f}**).\n")
-            f.write("- Local Search je stabilnější, ale má tendenci uvíznout v lokálních minimech.\n")
+        if ls_wins > hc_wins:
+            f.write(f"- **Local Search byl úspěšnější** ve většině testovaných funkcí ({ls_wins} vs. {hc_wins}).\n")
+            f.write("- Local Search dosahoval stabilnějších výsledků, ale měl tendenci uvíznout v lokálních minimech.\n")
         else:
-            f.write(f"- **Celkově se lépe vedl Hill Climber**, který dosáhl v průměru lepší hodnoty než Local Search (**{avg_hc_best:.4f} vs. {avg_ls_best:.4f}**).\n")
-            f.write("- Hill Climber se lépe vyhýbá lokálním minimům, ale vykazuje větší variabilitu výsledků.\n")
+            f.write(f"- **Hill Climber byl úspěšnější** ve většině testovaných funkcí ({hc_wins} vs. {ls_wins}).\n")
+            f.write("- Hill Climber se lépe vyhýbal lokálním minimům, ale výsledky byly méně stabilní.\n")
 
         f.write("- Počet sousedů a velikost STD mají výrazný vliv na výsledky obou metod.\n")
         f.write("- Optimální hodnoty STD se obvykle pohybovaly mezi 2–3.\n")
@@ -92,17 +90,14 @@ def run_experiments():
         results[function.name] = {}
 
         start_point = np.random.uniform(function.bounds[0], function.bounds[1], dimensions)
-        print(f"\nTestování {function.name}...")
 
         for iterations in iterations_to_try:
             for neighbors in neighbors_to_try:
                 for std in std_to_try:
-                    print(f"   Iterace {iterations}, Sousedi {neighbors}, STD {std}")
+                    print(f'Generuji výsledky pro funkci {function.name} s parametry: Iterace {iterations}, Sousedi {neighbors}, STD {std}')
 
-                    ls_best_point, ls_best_value, ls_plot = local_search(function, start_point, iterations,
-                                                                                     dimensions, neighbors, std)
-                    hc_best_point, hc_best_value, hc_plot = hill_climber(function, start_point, iterations,
-                                                                                     dimensions, neighbors, std)
+                    ls_best_point, ls_best_value, ls_plot = local_search(function, start_point, iterations, dimensions, neighbors, std)
+                    hc_best_point, hc_best_value, hc_plot = hill_climber(function, start_point, iterations, dimensions, neighbors, std)
 
                     results[function.name][(iterations, neighbors, std)] = {
                         "ls_best_value": ls_best_value,

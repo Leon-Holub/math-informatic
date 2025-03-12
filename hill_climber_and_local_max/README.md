@@ -1,4 +1,4 @@
-# Optimalizační Protokol
+# Horolezecký algoritmus a lokální prohledávání 
 
 Tento protokol dokumentuje optimalizaci různých testovacích funkcí pomocí algoritmů Local Search a Hill Climber.
 Testování probíhá na stejném startovacím bodě pro každou funkci s pevnou dimenzí **2**. Cílem je porovnat efektivitu algoritmů a vliv různých parametrů na nalezení minima.
@@ -15,223 +15,223 @@ Testování probíhá na stejném startovacím bodě pro každou funkci s pevnou
 
 ### Nejlepší a nejhorší nalezené hodnoty
 #### Nejlepší výsledek:
-- **Local Search**: 0.0000 při bodě **[-0.00426142 -0.0004346 ]** s nastavením: Iterace **100**, Sousedi **20**, STD **1**.
-- **Hill Climber**: 0.0054 při bodě **[-0.0730295  -0.00410318]** s nastavením: Iterace **100**, Sousedi **20**, STD **1**.
+- **Local Search**: 0.0001 při bodě **[0.00599551 0.00968066]** s nastavením: Iterace **100**, Sousedi **5**, STD **3**.
+- **Hill Climber**: 0.0057 při bodě **[-0.07309605 -0.01797293]** s nastavením: Iterace **20**, Sousedi **10**, STD **1**.
 
 #### Nejhorší výsledek:
-- **Local Search**: 0.3373 při bodě **[ 0.11370976 -0.5695711 ]** s nastavením: Iterace **20**, Sousedi **10**, STD **5**.
-- **Hill Climber**: 6.7356 při bodě **[-0.58748868  2.52793146]** s nastavením: Iterace **20**, Sousedi **5**, STD **5**.
+- **Local Search**: 0.3493 při bodě **[ 0.01458932 -0.5908189 ]** s nastavením: Iterace **20**, Sousedi **5**, STD **3**.
+- **Hill Climber**: 4.1263 při bodě **[-1.74142306  1.0458111 ]** s nastavením: Iterace **20**, Sousedi **5**, STD **3**.
 
 ### Výsledky jednotlivých testů
 
 | Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |
 |---------|--------|-----|------------|------------|---------|---------|
-| 20 | 5 | 1 | 0.0570 | 1.3022 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD1.png) |
-| 20 | 5 | 3 | 0.0377 | 2.4860 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD3.png) |
-| 20 | 5 | 5 | 0.2971 | 6.7356 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD5.png) |
-| 20 | 10 | 1 | 0.0104 | 0.9621 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD1.png) |
-| 20 | 10 | 3 | 0.0202 | 2.5378 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD3.png) |
-| 20 | 10 | 5 | 0.3373 | 0.0234 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD5.png) |
-| 20 | 20 | 1 | 0.0015 | 0.0550 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD1.png) |
-| 20 | 20 | 3 | 0.0045 | 0.9010 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD3.png) |
-| 20 | 20 | 5 | 0.0098 | 4.1221 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD5.png) |
-| 50 | 5 | 1 | 0.0087 | 0.2344 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD1.png) |
-| 50 | 5 | 3 | 0.0343 | 2.2458 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD3.png) |
-| 50 | 5 | 5 | 0.0407 | 1.0542 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD5.png) |
-| 50 | 10 | 1 | 0.0052 | 0.0655 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD1.png) |
-| 50 | 10 | 3 | 0.0391 | 4.6655 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD3.png) |
-| 50 | 10 | 5 | 0.1631 | 3.2660 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD5.png) |
-| 50 | 20 | 1 | 0.0042 | 0.1803 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD1.png) |
-| 50 | 20 | 3 | 0.0152 | 0.3140 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD3.png) |
-| 50 | 20 | 5 | 0.0045 | 0.3559 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD5.png) |
-| 100 | 5 | 1 | 0.0052 | 0.1063 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD1.png) |
-| 100 | 5 | 3 | 0.0021 | 1.0325 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD3.png) |
-| 100 | 5 | 5 | 0.0652 | 3.7228 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD5.png) |
-| 100 | 10 | 1 | 0.0008 | 0.1795 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD1.png) |
-| 100 | 10 | 3 | 0.0036 | 1.8700 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD3.png) |
-| 100 | 10 | 5 | 0.0228 | 4.6003 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD5.png) |
-| 100 | 20 | 1 | 0.0000 | 0.0054 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD1.png) |
-| 100 | 20 | 3 | 0.0027 | 1.4614 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD3.png) |
-| 100 | 20 | 5 | 0.0045 | 1.9410 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD5.png) |
+| 20 | 5 | 1 | 0.0593 | 1.6317 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD1.png) |
+| 20 | 5 | 3 | 0.3493 | 4.1263 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD3.png) |
+| 20 | 5 | 5 | 0.2641 | 3.0836 | ![LS](plots/Sphere__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N5_STD5.png) |
+| 20 | 10 | 1 | 0.0300 | 0.0057 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD1.png) |
+| 20 | 10 | 3 | 0.1271 | 0.2900 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD3.png) |
+| 20 | 10 | 5 | 0.3028 | 2.8612 | ![LS](plots/Sphere__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N10_STD5.png) |
+| 20 | 20 | 1 | 0.0081 | 0.0882 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD1.png) |
+| 20 | 20 | 3 | 0.0301 | 0.2759 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD3.png) |
+| 20 | 20 | 5 | 0.0123 | 2.0951 | ![LS](plots/Sphere__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I20_D2_N20_STD5.png) |
+| 50 | 5 | 1 | 0.0132 | 0.4208 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD1.png) |
+| 50 | 5 | 3 | 0.0609 | 2.6381 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD3.png) |
+| 50 | 5 | 5 | 0.2342 | 1.5743 | ![LS](plots/Sphere__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N5_STD5.png) |
+| 50 | 10 | 1 | 0.0084 | 0.2173 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD1.png) |
+| 50 | 10 | 3 | 0.0055 | 1.1482 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD3.png) |
+| 50 | 10 | 5 | 0.0321 | 0.0908 | ![LS](plots/Sphere__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N10_STD5.png) |
+| 50 | 20 | 1 | 0.0018 | 0.1499 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD1.png) |
+| 50 | 20 | 3 | 0.0014 | 1.8327 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD3.png) |
+| 50 | 20 | 5 | 0.0030 | 1.2336 | ![LS](plots/Sphere__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I50_D2_N20_STD5.png) |
+| 100 | 5 | 1 | 0.0046 | 0.1067 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD1.png) |
+| 100 | 5 | 3 | 0.0001 | 2.4356 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD3.png) |
+| 100 | 5 | 5 | 0.0109 | 1.4488 | ![LS](plots/Sphere__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N5_STD5.png) |
+| 100 | 10 | 1 | 0.0037 | 0.1800 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD1.png) |
+| 100 | 10 | 3 | 0.0063 | 0.1316 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD3.png) |
+| 100 | 10 | 5 | 0.0305 | 0.4782 | ![LS](plots/Sphere__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N10_STD5.png) |
+| 100 | 20 | 1 | 0.0008 | 0.0819 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD1.png) |
+| 100 | 20 | 3 | 0.0109 | 0.4368 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD3.png) |
+| 100 | 20 | 5 | 0.0105 | 1.3951 | ![LS](plots/Sphere__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Sphere__Hill_climber_I100_D2_N20_STD5.png) |
 
 ## Dixon-Price
 
 ### Nejlepší a nejhorší nalezené hodnoty
 #### Nejlepší výsledek:
-- **Local Search**: 0.0006 při bodě **[ 0.99133908 -0.71183797]** s nastavením: Iterace **50**, Sousedi **20**, STD **1**.
-- **Hill Climber**: 0.0072 při bodě **[0.92255713 0.69163401]** s nastavením: Iterace **100**, Sousedi **20**, STD **3**.
+- **Local Search**: 0.0018 při bodě **[0.96743807 0.68545169]** s nastavením: Iterace **50**, Sousedi **20**, STD **1**.
+- **Hill Climber**: 0.0010 při bodě **[0.98723849 0.71264259]** s nastavením: Iterace **100**, Sousedi **20**, STD **3**.
 
 #### Nejhorší výsledek:
-- **Local Search**: 0.2716 při bodě **[ 1.48414512 -0.9156855 ]** s nastavením: Iterace **50**, Sousedi **5**, STD **5**.
-- **Hill Climber**: 331.9081 při bodě **[ 6.19662628 -3.43933891]** s nastavením: Iterace **100**, Sousedi **5**, STD **5**.
+- **Local Search**: 0.5454 při bodě **[ 0.69217363 -0.10210748]** s nastavením: Iterace **20**, Sousedi **20**, STD **5**.
+- **Hill Climber**: 299.8511 při bodě **[0.39119073 2.97461709]** s nastavením: Iterace **20**, Sousedi **5**, STD **5**.
 
 ### Výsledky jednotlivých testů
 
 | Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |
 |---------|--------|-----|------------|------------|---------|---------|
-| 20 | 5 | 1 | 0.0074 | 0.3072 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD1.png) |
-| 20 | 5 | 3 | 0.1835 | 2.9332 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD3.png) |
-| 20 | 5 | 5 | 0.0348 | 269.1522 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD5.png) |
-| 20 | 10 | 1 | 0.0603 | 0.0812 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD1.png) |
-| 20 | 10 | 3 | 0.0273 | 0.1860 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD3.png) |
-| 20 | 10 | 5 | 0.2132 | 3.8380 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD5.png) |
-| 20 | 20 | 1 | 0.0202 | 0.3778 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD1.png) |
-| 20 | 20 | 3 | 0.0627 | 1.8671 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD3.png) |
-| 20 | 20 | 5 | 0.0438 | 0.3902 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD5.png) |
-| 50 | 5 | 1 | 0.0230 | 4.0096 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD1.png) |
-| 50 | 5 | 3 | 0.0461 | 1.4334 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD3.png) |
-| 50 | 5 | 5 | 0.2716 | 14.6732 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD5.png) |
-| 50 | 10 | 1 | 0.0083 | 0.5568 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD1.png) |
-| 50 | 10 | 3 | 0.0250 | 1.9451 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD3.png) |
-| 50 | 10 | 5 | 0.1873 | 3.3098 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD5.png) |
-| 50 | 20 | 1 | 0.0006 | 0.3748 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD1.png) |
-| 50 | 20 | 3 | 0.0261 | 1.1176 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD3.png) |
-| 50 | 20 | 5 | 0.1270 | 17.6982 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD5.png) |
-| 100 | 5 | 1 | 0.0010 | 0.2902 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD1.png) |
-| 100 | 5 | 3 | 0.0138 | 2.4810 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD3.png) |
-| 100 | 5 | 5 | 0.0040 | 331.9081 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD5.png) |
-| 100 | 10 | 1 | 0.0021 | 0.7560 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD1.png) |
-| 100 | 10 | 3 | 0.0655 | 0.3891 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD3.png) |
-| 100 | 10 | 5 | 0.0121 | 1.5464 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD5.png) |
-| 100 | 20 | 1 | 0.0033 | 0.5901 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD1.png) |
-| 100 | 20 | 3 | 0.0401 | 0.0072 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD3.png) |
-| 100 | 20 | 5 | 0.0125 | 13.6464 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD5.png) |
+| 20 | 5 | 1 | 0.0020 | 1.0874 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD1.png) |
+| 20 | 5 | 3 | 0.2728 | 5.5677 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD3.png) |
+| 20 | 5 | 5 | 0.1852 | 299.8511 | ![LS](plots/DixonPrice__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N5_STD5.png) |
+| 20 | 10 | 1 | 0.0203 | 0.1441 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD1.png) |
+| 20 | 10 | 3 | 0.0680 | 0.7454 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD3.png) |
+| 20 | 10 | 5 | 0.0977 | 7.9132 | ![LS](plots/DixonPrice__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N10_STD5.png) |
+| 20 | 20 | 1 | 0.0046 | 0.1027 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD1.png) |
+| 20 | 20 | 3 | 0.0421 | 0.2666 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD3.png) |
+| 20 | 20 | 5 | 0.5454 | 0.7909 | ![LS](plots/DixonPrice__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I20_D2_N20_STD5.png) |
+| 50 | 5 | 1 | 0.0292 | 0.6704 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD1.png) |
+| 50 | 5 | 3 | 0.2890 | 63.6882 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD3.png) |
+| 50 | 5 | 5 | 0.0843 | 1.1258 | ![LS](plots/DixonPrice__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N5_STD5.png) |
+| 50 | 10 | 1 | 0.0024 | 0.5577 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD1.png) |
+| 50 | 10 | 3 | 0.1537 | 0.3828 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD3.png) |
+| 50 | 10 | 5 | 0.1992 | 14.3804 | ![LS](plots/DixonPrice__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N10_STD5.png) |
+| 50 | 20 | 1 | 0.0018 | 0.0869 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD1.png) |
+| 50 | 20 | 3 | 0.0020 | 2.3680 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD3.png) |
+| 50 | 20 | 5 | 0.0538 | 13.5762 | ![LS](plots/DixonPrice__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I50_D2_N20_STD5.png) |
+| 100 | 5 | 1 | 0.0190 | 0.8329 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD1.png) |
+| 100 | 5 | 3 | 0.0366 | 2.4068 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD3.png) |
+| 100 | 5 | 5 | 0.1634 | 12.9863 | ![LS](plots/DixonPrice__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N5_STD5.png) |
+| 100 | 10 | 1 | 0.0112 | 0.4477 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD1.png) |
+| 100 | 10 | 3 | 0.0053 | 14.7251 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD3.png) |
+| 100 | 10 | 5 | 0.0310 | 0.4417 | ![LS](plots/DixonPrice__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N10_STD5.png) |
+| 100 | 20 | 1 | 0.0025 | 0.1108 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD1.png) |
+| 100 | 20 | 3 | 0.0043 | 0.0010 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD3.png) |
+| 100 | 20 | 5 | 0.0086 | 4.9948 | ![LS](plots/DixonPrice__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/DixonPrice__Hill_climber_I100_D2_N20_STD5.png) |
 
 ## Michaelowicz
 
 ### Nejlepší a nejhorší nalezené hodnoty
 #### Nejlepší výsledek:
-- **Local Search**: -1.7930 při bodě **[2.21053349 1.58428296]** s nastavením: Iterace **50**, Sousedi **20**, STD **1**.
-- **Hill Climber**: -1.7999 při bodě **[2.19402687 1.57224726]** s nastavením: Iterace **100**, Sousedi **10**, STD **5**.
+- **Local Search**: -1.8001 při bodě **[2.19800145 1.56635011]** s nastavením: Iterace **20**, Sousedi **20**, STD **3**.
+- **Hill Climber**: -1.3558 při bodě **[1.9998671  1.58933013]** s nastavením: Iterace **50**, Sousedi **5**, STD **5**.
 
 #### Nejhorší výsledek:
-- **Local Search**: -1.0578 při bodě **[2.10519969 2.69117377]** s nastavením: Iterace **20**, Sousedi **5**, STD **3**.
-- **Hill Climber**: -0.0554 při bodě **[0.96033311 1.28392457]** s nastavením: Iterace **50**, Sousedi **5**, STD **1**.
+- **Local Search**: -1.0014 při bodě **[1.65779641 1.58014727]** s nastavením: Iterace **20**, Sousedi **5**, STD **5**.
+- **Hill Climber**: -0.0175 při bodě **[0.94451831 1.85170986]** s nastavením: Iterace **50**, Sousedi **5**, STD **3**.
 
 ### Výsledky jednotlivých testů
 
 | Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |
 |---------|--------|-----|------------|------------|---------|---------|
-| 20 | 5 | 1 | -1.1689 | -0.8171 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD1.png) |
-| 20 | 5 | 3 | -1.0578 | -0.6569 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD3.png) |
-| 20 | 5 | 5 | -1.4866 | -1.1914 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD5.png) |
-| 20 | 10 | 1 | -1.5871 | -1.6115 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD1.png) |
-| 20 | 10 | 3 | -1.7560 | -0.8953 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD3.png) |
-| 20 | 10 | 5 | -1.6158 | -1.5957 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD5.png) |
-| 20 | 20 | 1 | -1.7769 | -0.9889 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD1.png) |
-| 20 | 20 | 3 | -1.6580 | -0.8560 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD3.png) |
-| 20 | 20 | 5 | -1.7624 | -1.0563 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD5.png) |
-| 50 | 5 | 1 | -1.6781 | -0.0554 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD1.png) |
-| 50 | 5 | 3 | -1.7675 | -0.7741 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD3.png) |
-| 50 | 5 | 5 | -1.7099 | -0.5582 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD5.png) |
-| 50 | 10 | 1 | -1.7079 | -0.7788 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD1.png) |
-| 50 | 10 | 3 | -1.6578 | -1.1840 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD3.png) |
-| 50 | 10 | 5 | -1.7497 | -0.6848 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD5.png) |
-| 50 | 20 | 1 | -1.7930 | -0.9894 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD1.png) |
-| 50 | 20 | 3 | -1.7197 | -1.3043 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD3.png) |
-| 50 | 20 | 5 | -1.7574 | -1.4759 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD5.png) |
-| 100 | 5 | 1 | -1.7562 | -0.9917 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD1.png) |
-| 100 | 5 | 3 | -1.4272 | -0.9858 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD3.png) |
-| 100 | 5 | 5 | -1.7021 | -0.8361 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD5.png) |
-| 100 | 10 | 1 | -1.7280 | -0.8301 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD1.png) |
-| 100 | 10 | 3 | -1.7240 | -0.7982 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD3.png) |
-| 100 | 10 | 5 | -1.7398 | -1.7999 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD5.png) |
-| 100 | 20 | 1 | -1.7891 | -1.0919 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD1.png) |
-| 100 | 20 | 3 | -1.7729 | -1.7876 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD3.png) |
-| 100 | 20 | 5 | -1.7333 | -0.9278 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD5.png) |
+| 20 | 5 | 1 | -1.5400 | -1.1739 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD1.png) |
+| 20 | 5 | 3 | -1.5032 | -0.1691 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD3.png) |
+| 20 | 5 | 5 | -1.0014 | -0.0548 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N5_STD5.png) |
+| 20 | 10 | 1 | -1.6135 | -0.9780 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD1.png) |
+| 20 | 10 | 3 | -1.7095 | -0.1876 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD3.png) |
+| 20 | 10 | 5 | -1.3554 | -0.5205 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N10_STD5.png) |
+| 20 | 20 | 1 | -1.6618 | -0.8774 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD1.png) |
+| 20 | 20 | 3 | -1.8001 | -1.0485 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD3.png) |
+| 20 | 20 | 5 | -1.7667 | -0.9999 | ![LS](plots/Michaelowicz__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I20_D2_N20_STD5.png) |
+| 50 | 5 | 1 | -1.7884 | -0.4902 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD1.png) |
+| 50 | 5 | 3 | -1.2661 | -0.0175 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD3.png) |
+| 50 | 5 | 5 | -1.5324 | -1.3558 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N5_STD5.png) |
+| 50 | 10 | 1 | -1.7411 | -0.8063 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD1.png) |
+| 50 | 10 | 3 | -1.6108 | -0.9483 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD3.png) |
+| 50 | 10 | 5 | -1.6693 | -0.8469 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N10_STD5.png) |
+| 50 | 20 | 1 | -1.7789 | -1.0000 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD1.png) |
+| 50 | 20 | 3 | -1.6927 | -0.8007 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD3.png) |
+| 50 | 20 | 5 | -1.6476 | -0.9770 | ![LS](plots/Michaelowicz__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I50_D2_N20_STD5.png) |
+| 100 | 5 | 1 | -1.6982 | -0.7854 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD1.png) |
+| 100 | 5 | 3 | -1.4466 | -0.4565 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD3.png) |
+| 100 | 5 | 5 | -1.6237 | -0.1156 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N5_STD5.png) |
+| 100 | 10 | 1 | -1.7819 | -0.7974 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD1.png) |
+| 100 | 10 | 3 | -1.6762 | -0.6727 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD3.png) |
+| 100 | 10 | 5 | -1.6386 | -0.9845 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N10_STD5.png) |
+| 100 | 20 | 1 | -1.7932 | -1.1274 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD1.png) |
+| 100 | 20 | 3 | -1.7938 | -1.0387 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD3.png) |
+| 100 | 20 | 5 | -1.7267 | -0.9853 | ![LS](plots/Michaelowicz__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Michaelowicz__Hill_climber_I100_D2_N20_STD5.png) |
 
 ## Styblinski-Tang
 
 ### Nejlepší a nejhorší nalezené hodnoty
 #### Nejlepší výsledek:
-- **Local Search**: -78.3069 při bodě **[-2.87962065 -2.9334426 ]** s nastavením: Iterace **50**, Sousedi **10**, STD **3**.
-- **Hill Climber**: -76.9750 při bodě **[-2.65004185 -3.04034882]** s nastavením: Iterace **100**, Sousedi **20**, STD **5**.
+- **Local Search**: -78.3239 při bodě **[-2.91359255 -2.92318409]** s nastavením: Iterace **100**, Sousedi **20**, STD **1**.
+- **Hill Climber**: -78.2842 při bodě **[-2.90366253 -2.95584409]** s nastavením: Iterace **50**, Sousedi **10**, STD **5**.
 
 #### Nejhorší výsledek:
-- **Local Search**: -49.7613 při bodě **[2.68991047 2.61238816]** s nastavením: Iterace **50**, Sousedi **5**, STD **1**.
-- **Hill Climber**: -30.5086 při bodě **[2.15005793 1.35298787]** s nastavením: Iterace **50**, Sousedi **5**, STD **1**.
+- **Local Search**: -62.4907 při bodě **[ 3.00899019 -3.08395995]** s nastavením: Iterace **20**, Sousedi **10**, STD **3**.
+- **Hill Climber**: -34.3021 při bodě **[-3.55531442 -0.58831738]** s nastavením: Iterace **50**, Sousedi **5**, STD **5**.
 
 ### Výsledky jednotlivých testů
 
 | Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |
 |---------|--------|-----|------------|------------|---------|---------|
-| 20 | 5 | 1 | -50.0400 | -35.3314 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD1.png) |
-| 20 | 5 | 3 | -78.2727 | -61.8062 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD3.png) |
-| 20 | 5 | 5 | -76.8142 | -57.2296 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD5.png) |
-| 20 | 10 | 1 | -49.9874 | -48.6334 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD1.png) |
-| 20 | 10 | 3 | -76.1671 | -58.5550 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD3.png) |
-| 20 | 10 | 5 | -77.7391 | -56.6698 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD5.png) |
-| 20 | 20 | 1 | -50.0099 | -48.1022 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD1.png) |
-| 20 | 20 | 3 | -78.1484 | -73.6107 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD3.png) |
-| 20 | 20 | 5 | -78.0697 | -63.3896 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD5.png) |
-| 50 | 5 | 1 | -49.7613 | -30.5086 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD1.png) |
-| 50 | 5 | 3 | -77.6800 | -44.3328 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD3.png) |
-| 50 | 5 | 5 | -76.8516 | -75.1769 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD5.png) |
-| 50 | 10 | 1 | -49.9421 | -48.9855 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD1.png) |
-| 50 | 10 | 3 | -78.3069 | -64.7443 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD3.png) |
-| 50 | 10 | 5 | -77.6104 | -68.1694 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD5.png) |
-| 50 | 20 | 1 | -50.0559 | -49.1269 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD1.png) |
-| 50 | 20 | 3 | -78.1780 | -57.1526 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD3.png) |
-| 50 | 20 | 5 | -77.9621 | -76.2889 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD5.png) |
-| 100 | 5 | 1 | -50.0012 | -49.9458 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD1.png) |
-| 100 | 5 | 3 | -77.9410 | -66.7672 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD3.png) |
-| 100 | 5 | 5 | -72.5970 | -63.2071 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD5.png) |
-| 100 | 10 | 1 | -50.0224 | -48.9054 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD1.png) |
-| 100 | 10 | 3 | -78.0597 | -72.3556 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD3.png) |
-| 100 | 10 | 5 | -77.9712 | -53.7302 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD5.png) |
-| 100 | 20 | 1 | -50.0562 | -49.9355 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD1.png) |
-| 100 | 20 | 3 | -78.2075 | -76.0643 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD3.png) |
-| 100 | 20 | 5 | -78.2884 | -76.9750 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD5.png) |
+| 20 | 5 | 1 | -77.4847 | -54.7023 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD1.png) |
+| 20 | 5 | 3 | -77.6432 | -64.4777 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD3.png) |
+| 20 | 5 | 5 | -62.8518 | -57.6188 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N5_STD5.png) |
+| 20 | 10 | 1 | -64.1302 | -62.5209 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD1.png) |
+| 20 | 10 | 3 | -62.4907 | -78.0506 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD3.png) |
+| 20 | 10 | 5 | -77.4084 | -57.5062 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N10_STD5.png) |
+| 20 | 20 | 1 | -78.2710 | -63.4023 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD1.png) |
+| 20 | 20 | 3 | -77.8979 | -75.3508 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD3.png) |
+| 20 | 20 | 5 | -77.8258 | -67.9829 | ![LS](plots/StyblinskiTang__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I20_D2_N20_STD5.png) |
+| 50 | 5 | 1 | -64.1046 | -72.8303 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD1.png) |
+| 50 | 5 | 3 | -76.2956 | -44.2230 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD3.png) |
+| 50 | 5 | 5 | -77.6399 | -34.3021 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N5_STD5.png) |
+| 50 | 10 | 1 | -78.3188 | -77.5695 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD1.png) |
+| 50 | 10 | 3 | -78.2592 | -73.3352 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD3.png) |
+| 50 | 10 | 5 | -77.9119 | -78.2842 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N10_STD5.png) |
+| 50 | 20 | 1 | -78.2976 | -60.6621 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD1.png) |
+| 50 | 20 | 3 | -77.8779 | -67.9204 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD3.png) |
+| 50 | 20 | 5 | -78.0885 | -77.3092 | ![LS](plots/StyblinskiTang__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I50_D2_N20_STD5.png) |
+| 100 | 5 | 1 | -64.1306 | -76.5206 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD1.png) |
+| 100 | 5 | 3 | -77.8807 | -63.3663 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD3.png) |
+| 100 | 5 | 5 | -77.1127 | -46.8622 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N5_STD5.png) |
+| 100 | 10 | 1 | -64.1582 | -75.5996 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD1.png) |
+| 100 | 10 | 3 | -78.2870 | -70.2795 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD3.png) |
+| 100 | 10 | 5 | -77.9158 | -62.2189 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N10_STD5.png) |
+| 100 | 20 | 1 | -78.3239 | -78.1754 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD1.png) |
+| 100 | 20 | 3 | -78.3144 | -57.9772 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD3.png) |
+| 100 | 20 | 5 | -78.1005 | -63.3245 | ![LS](plots/StyblinskiTang__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/StyblinskiTang__Hill_climber_I100_D2_N20_STD5.png) |
 
 ## Rastrigin
 
 ### Nejlepší a nejhorší nalezené hodnoty
 #### Nejlepší výsledek:
-- **Local Search**: 0.2724 při bodě **[0.0025254  0.03704861]** s nastavením: Iterace **50**, Sousedi **20**, STD **5**.
-- **Hill Climber**: 2.3382 při bodě **[0.02529328 1.07388394]** s nastavením: Iterace **100**, Sousedi **20**, STD **1**.
+- **Local Search**: 0.0747 při bodě **[0.00854437 0.01743464]** s nastavením: Iterace **50**, Sousedi **5**, STD **3**.
+- **Hill Climber**: 0.5977 při bodě **[-0.02905179 -0.04676051]** s nastavením: Iterace **100**, Sousedi **10**, STD **1**.
 
 #### Nejhorší výsledek:
-- **Local Search**: 5.9143 při bodě **[ 0.85064392 -0.97176801]** s nastavením: Iterace **20**, Sousedi **5**, STD **5**.
-- **Hill Climber**: 27.6347 při bodě **[-0.20539425 -1.60832174]** s nastavením: Iterace **20**, Sousedi **5**, STD **5**.
+- **Local Search**: 9.8566 při bodě **[0.83619229 1.94871973]** s nastavením: Iterace **20**, Sousedi **5**, STD **3**.
+- **Hill Climber**: 30.7557 při bodě **[ 2.22830561 -0.63207692]** s nastavením: Iterace **100**, Sousedi **5**, STD **5**.
 
 ### Výsledky jednotlivých testů
 
 | Iterace | Sousedi | STD | LS Hodnota | HC Hodnota | LS Graf | HC Graf |
 |---------|--------|-----|------------|------------|---------|---------|
-| 20 | 5 | 1 | 2.6939 | 8.1947 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD1.png) |
-| 20 | 5 | 3 | 2.9670 | 26.0070 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD3.png) |
-| 20 | 5 | 5 | 5.9143 | 27.6347 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD5.png) |
-| 20 | 10 | 1 | 3.3067 | 4.6619 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD1.png) |
-| 20 | 10 | 3 | 1.1164 | 4.1723 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD3.png) |
-| 20 | 10 | 5 | 2.6541 | 13.9815 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD5.png) |
-| 20 | 20 | 1 | 0.5759 | 3.4170 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD1.png) |
-| 20 | 20 | 3 | 1.4992 | 11.2915 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD3.png) |
-| 20 | 20 | 5 | 2.4961 | 18.1318 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD5.png) |
-| 50 | 5 | 1 | 0.6055 | 14.5338 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD1.png) |
-| 50 | 5 | 3 | 1.8648 | 17.0988 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD3.png) |
-| 50 | 5 | 5 | 1.1244 | 15.1923 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD5.png) |
-| 50 | 10 | 1 | 0.5562 | 6.0361 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD1.png) |
-| 50 | 10 | 3 | 1.8855 | 10.6224 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD3.png) |
-| 50 | 10 | 5 | 0.6285 | 10.3309 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD5.png) |
-| 50 | 20 | 1 | 1.1679 | 4.9898 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD1.png) |
-| 50 | 20 | 3 | 2.5142 | 6.4272 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD3.png) |
-| 50 | 20 | 5 | 0.2724 | 10.1282 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD5.png) |
-| 100 | 5 | 1 | 0.4940 | 15.5991 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD1.png) |
-| 100 | 5 | 3 | 1.6021 | 13.6450 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD3.png) |
-| 100 | 5 | 5 | 2.5878 | 19.7122 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD5.png) |
-| 100 | 10 | 1 | 1.1713 | 10.8011 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD1.png) |
-| 100 | 10 | 3 | 1.9953 | 9.5745 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD3.png) |
-| 100 | 10 | 5 | 1.7360 | 18.9999 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD5.png) |
-| 100 | 20 | 1 | 0.3408 | 2.3382 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD1.png) |
-| 100 | 20 | 3 | 1.9247 | 4.4789 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD3.png) |
-| 100 | 20 | 5 | 1.0737 | 11.5834 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD5.png) |
+| 20 | 5 | 1 | 3.9926 | 15.3733 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD1.png) |
+| 20 | 5 | 3 | 9.8566 | 4.1658 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD3.png) |
+| 20 | 5 | 5 | 3.0941 | 27.4898 | ![LS](plots/Rastrigin__Local_search_I20_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N5_STD5.png) |
+| 20 | 10 | 1 | 1.4141 | 6.0832 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD1.png) |
+| 20 | 10 | 3 | 4.1994 | 1.1072 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD3.png) |
+| 20 | 10 | 5 | 1.8156 | 24.1998 | ![LS](plots/Rastrigin__Local_search_I20_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N10_STD5.png) |
+| 20 | 20 | 1 | 1.0359 | 2.0235 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD1.png) |
+| 20 | 20 | 3 | 2.4163 | 12.1162 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD3.png) |
+| 20 | 20 | 5 | 1.3942 | 11.9827 | ![LS](plots/Rastrigin__Local_search_I20_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I20_D2_N20_STD5.png) |
+| 50 | 5 | 1 | 1.5990 | 19.3888 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD1.png) |
+| 50 | 5 | 3 | 0.0747 | 11.5590 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD3.png) |
+| 50 | 5 | 5 | 4.0147 | 25.4808 | ![LS](plots/Rastrigin__Local_search_I50_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N5_STD5.png) |
+| 50 | 10 | 1 | 1.0600 | 7.0181 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD1.png) |
+| 50 | 10 | 3 | 1.4650 | 13.7680 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD3.png) |
+| 50 | 10 | 5 | 0.5972 | 12.3828 | ![LS](plots/Rastrigin__Local_search_I50_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N10_STD5.png) |
+| 50 | 20 | 1 | 0.1305 | 4.5481 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD1.png) |
+| 50 | 20 | 3 | 1.0600 | 9.9378 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD3.png) |
+| 50 | 20 | 5 | 1.3764 | 16.0192 | ![LS](plots/Rastrigin__Local_search_I50_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I50_D2_N20_STD5.png) |
+| 100 | 5 | 1 | 0.5589 | 2.6137 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD1.png) |
+| 100 | 5 | 3 | 2.6674 | 28.5195 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD3.png) |
+| 100 | 5 | 5 | 2.5347 | 30.7557 | ![LS](plots/Rastrigin__Local_search_I100_D2_N5_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N5_STD5.png) |
+| 100 | 10 | 1 | 0.2597 | 0.5977 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD1.png) |
+| 100 | 10 | 3 | 1.3574 | 6.0861 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD3.png) |
+| 100 | 10 | 5 | 0.5442 | 30.2604 | ![LS](plots/Rastrigin__Local_search_I100_D2_N10_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N10_STD5.png) |
+| 100 | 20 | 1 | 0.1542 | 1.6022 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD1.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD1.png) |
+| 100 | 20 | 3 | 1.5406 | 3.8935 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD3.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD3.png) |
+| 100 | 20 | 5 | 0.2089 | 11.0679 | ![LS](plots/Rastrigin__Local_search_I100_D2_N20_STD5.png) | ![HC](plots/Rastrigin__Hill_climber_I100_D2_N20_STD5.png) |
 
 ## Závěr
 
 Na základě provedených experimentů lze vyvodit následující závěry:
 
-- **Celkově se lépe vedl Local Search**, který dosáhl v průměru lepší hodnoty než Hill Climber (**-15.9654 vs. -15.2848**).
-- Local Search je stabilnější, ale má tendenci uvíznout v lokálních minimech.
+- **Local Search byl úspěšnější** ve většině testovaných funkcí (4 vs. 1).
+- Local Search dosahoval stabilnějších výsledků, ale měl tendenci uvíznout v lokálních minimech.
 - Počet sousedů a velikost STD mají výrazný vliv na výsledky obou metod.
 - Optimální hodnoty STD se obvykle pohybovaly mezi 2–3.
 - Vyšší počet sousedů (10–20) umožnil robustnější prohledávání prostoru.
