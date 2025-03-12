@@ -1,5 +1,6 @@
 import math
 import os
+import re
 
 from matplotlib import pyplot as plt
 
@@ -43,11 +44,19 @@ functions = [
 ]
 
 
-def plot_function(func_name, best_point, best_value, best_values_history):
+def plot_function(func_name, best_point, best_value, best_values_history, iterations, dimensions, std, neighbors):
     plt.figure(figsize=(10, 5))
-    plt.plot(best_values_history)
-    plt.title(f"{func_name}\nBest value: {best_value:.2f}\nBest point: {best_point}")
+    plt.plot(best_values_history, color="b", markersize=4)
+    plt.title(f"{func_name}\nBest value: {best_value:.4f}\nBest point: {best_point}")
     plt.xlabel("Iteration")
     plt.ylabel("Function value")
+    textstr = f"Iterations: {iterations}\nDimensions: {dimensions}\nSTD: {std}\nNeighbors: {neighbors}"
+    plt.gcf().text(0.75, 0.75, textstr, fontsize=10, bbox=dict(facecolor="white", alpha=0.8))
     plt.tight_layout()
-    plt.show()
+
+    os.makedirs("plots", exist_ok=True)
+    clean_func_name = re.sub(r"[^a-zA-Z0-9_]", "", func_name.replace(" ", "_"))
+    filename = f"plots/{clean_func_name}_I{iterations}_D{dimensions}_N{neighbors}_STD{std}.png"
+    plt.savefig(filename)
+    plt.close()
+    return filename

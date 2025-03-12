@@ -3,14 +3,7 @@ import numpy as np
 
 from functions import plot_function
 
-# Parametry  zadání
-iterations = 20  # Počet iterací
-dimensions = 2  # Počet dimenzí
-neighbors = 3  # Počet generovaných sousedů
-std = 3  # Standardní odchylka generování sousedů
-
-
-def generate_valid_candidates(current_point, lower_bound, upper_bound):
+def generate_valid_candidates(current_point, lower_bound, upper_bound, std, dimensions, neighbors):
     candidates = []
     for _ in range(neighbors):
         while True:
@@ -21,17 +14,17 @@ def generate_valid_candidates(current_point, lower_bound, upper_bound):
     return np.array(candidates)
 
 
-def local_search(optFunction, start_point):
+def local_search(optFunction, start_point, iterations=20, dimensions=2, neighbors=3, std=3):
     lower_bound, upper_bound = optFunction.bounds
     current_point = start_point.copy()
     current_value = optFunction.evaluate(current_point)
 
-    best_values_history = [current_value]  # Ukládáme historii nejlepší hodnoty
+    best_values_history = [current_value]
 
     for _ in range(iterations):
         candidates = np.vstack([
-            current_point,  # Přidáme aktuální bod do výběru
-            generate_valid_candidates(current_point, lower_bound, upper_bound)
+            current_point,
+            generate_valid_candidates(current_point, lower_bound, upper_bound, std, dimensions, neighbors)
         ])
 
         candidate_values = np.array([optFunction.evaluate(candidate) for candidate in candidates])
@@ -46,10 +39,10 @@ def local_search(optFunction, start_point):
 
         best_values_history.append(best_value)
 
-    plot_function(f"{optFunction.name} - Local search", best_point, best_value, best_values_history)
+    plot_file_url = plot_function(f"{optFunction.name} - Local search", best_point, best_value, best_values_history, iterations, dimensions, std, neighbors)
+    return best_point, best_value, plot_file_url
 
-
-def hill_climber(optFunction, start_point):
+def hill_climber(optFunction, start_point, iterations=20, dimensions=2, neighbors=3, std=3):
     lower_bound, upper_bound = optFunction.bounds
     current_point = start_point.copy()
     current_value = optFunction.evaluate(current_point)
@@ -57,7 +50,7 @@ def hill_climber(optFunction, start_point):
     best_values_history = [current_value]
 
     for _ in range(iterations):
-        candidates = generate_valid_candidates(current_point, lower_bound, upper_bound)
+        candidates = generate_valid_candidates(current_point, lower_bound, upper_bound, std, dimensions, neighbors)
 
         candidate_values = np.array([optFunction.evaluate(candidate) for candidate in candidates])
 
@@ -71,10 +64,10 @@ def hill_climber(optFunction, start_point):
 
         best_values_history.append(best_value)
 
-    plot_function(f"{optFunction.name} - Hill climber", best_point, best_value, best_values_history)
+    plot_file_url = plot_function(f"{optFunction.name} - Hill climber", best_point, best_value, best_values_history, iterations, dimensions, std, neighbors)
+    return best_point, best_value, plot_file_url
 
-
-def start_functions(opt_function=None, do_hill_climber=True, do_local_search=True):
+def start_functions(opt_function=None, do_hill_climber=True, do_local_search=True, iterations=20, dimensions=2, neighbors=3, std=3):
     if opt_function:
         functions_to_run = [opt_function]
     else:
@@ -84,10 +77,26 @@ def start_functions(opt_function=None, do_hill_climber=True, do_local_search=Tru
         start_point = np.random.uniform(function.bounds[0], function.bounds[1], dimensions)
         print(f"\nStart point for {function.name}: {start_point}")
         if do_local_search:
-            local_search(function, start_point)
-        if do_hill_climber:
-            hill_climber(function, start_point)
+            local_search(function, start_point, iterations, dimensions, neighbors, std)
 
+        if do_hill_climber:
+            hill_climber(function, start_point,iterations, dimensions, neighbors, std)
+
+
+def start_functions_experiments():
+    dimensions_to_try = [2, 5, 10]
+    iterations_to_try = [20, 50, 100]
+    neighbors_to_try = [3, 5, 10]
+    std_to_try = [1, 3, 5]
+
+    for function in functions.functions:
+        for dimensions in dimensions_to_try:
+            start_point = np.random.uniform(function.bounds[0], function.bounds[1], dimensions)
+            for iterations in iterations_to_try:
+                for neighbors in neighbors_to_try:
+                    for std in std_to_try:
+                        local_search(function, start_point, iterations, dimensions, neighbors, std)
+                        hill_climber(function, start_point, iterations, dimensions, neighbors, std)
 
 
 if __name__ == "__main__":
