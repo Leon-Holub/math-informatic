@@ -75,7 +75,6 @@ def hill_climber(optFunction, start_point, iterations=20, dimensions=2, neighbor
 
 
 def simulated_annealing(optFunction, start_point, iterations=100, dimensions=2, neighbors=3, std=3, T0=100, Tf=0.01):
-    import numpy as np
 
     lower_bound, upper_bound = optFunction.bounds
     current_point = start_point.copy()
