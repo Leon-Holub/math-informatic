@@ -58,8 +58,6 @@ Výpočetní čas roste exponenciálně – trojnásobně s každou přidanou t�
 
 ![Vybrané předměty](./tables/table3.png)
 
-Super! Na základě poskytnutých obrázků a údajů jsem finální část tvého `readme.md` doplnil takto:
-
 ---
 
 ## Vlastní měření pro vyšší počty tříd
