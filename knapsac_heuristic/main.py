@@ -64,7 +64,7 @@ class KnapsackProblem:
             total_value += item[3]
 
         if total_volume > self.capacity:
-            return -1  # penalizace
+            return -1
         return total_value
 
     def random_solution(self) -> List[int]:
@@ -95,7 +95,7 @@ def simulated_annealing(problem: KnapsackProblem, evaluations=1000, T0=100, Tf=0
         neighbor = problem.neighbor(current_solution, prob)
         key = tuple(neighbor)
         if key in evaluated:
-            continue  # přeskočíme duplicitní řešení
+            continue
         evaluated.add(key)
         neighbor_value = problem.evaluate(neighbor)
         evaluations_used += 1
